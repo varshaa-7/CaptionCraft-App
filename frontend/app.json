@@ -1,0 +1,29 @@
+{
+  "expo": {
+    "name": "CaptionCraft",
+    "slug": "captioncraft",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": false,
+      "bundleIdentifier": "com.yourname.captioncraft"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#fff0f5"
+      },
+      "package": "com.yourname.captioncraft",
+      "permissions": [
+        "INTERNET"
+      ]
+    },
+    "plugins": [
+      "expo-asset",
+      "expo-font"
+    ]
+  }
+}
