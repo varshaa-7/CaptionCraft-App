@@ -79,7 +79,9 @@ export default function GenerateScreen() {
   };
 
   const captionsUsed = user?.quota?.captionsUsed || 0;
-  const captionsLimit = (user?.subscription === 'pro' ? 100 : 10) + (user?.quota?.bonusCaption || 0);
+  const bonusCaption = user?.quota?.bonusCaption || 0;
+  const captionsLimit = (user?.subscription === 'pro' ? 100 : 10) + bonusCaption;
+  const captionsRemaining = captionsLimit - captionsUsed;
   const quotaPercent = Math.min(captionsUsed / captionsLimit, 1);
 
   return (
@@ -125,7 +127,7 @@ export default function GenerateScreen() {
           <View style={styles.quotaRow}>
             <Text style={[styles.quotaLabel, { color: theme.text }]}>Daily Captions</Text>
             <Text style={[styles.quotaLabel, { color: theme.text }]}>
-              {captionsUsed} / {captionsLimit}
+              {captionsRemaining} left of {captionsLimit}
             </Text>
           </View>
           <View style={[styles.quotaTrack, { backgroundColor: theme.soft }]}>

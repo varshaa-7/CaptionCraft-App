@@ -1,10 +1,11 @@
 import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { Constants } from 'expo-constants';
 
 // ⚠️ CHANGE THIS to your deployed backend URL (Railway/Render)
 // For local development use: 'http://YOUR_LOCAL_IP:5000/api'
 // e.g. 'http://192.168.1.100:5000/api'
-const BASE_URL = 'http://10.72.205.208:5000/api';
+const BASE_URL = Constants.expoConfig?.extra?.apiUrl;
 
 const api = axios.create({
   baseURL: BASE_URL,

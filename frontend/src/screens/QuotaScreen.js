@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import {
   View, Text, TouchableOpacity, StyleSheet,
   ScrollView, ActivityIndicator, Alert
 } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
+import { useFocusEffect } from '@react-navigation/native';
 import Toast from 'react-native-toast-message';
 import { getQuota, claimAdReward } from '../services/api';
 import { useAuth } from '../context/AuthContext';
@@ -24,18 +25,25 @@ export default function QuotaScreen() {
     return () => clearInterval(interval);
   }, []);
 
-  const fetchQuota = async () => {
-    try {
-      const { data } = await getQuota();
-      setQuota(data.quota);
-      setLimits(data.limits);
-      setResetIn(data.resetIn);
-    } catch (err) {
-      Toast.show({ type: 'error', text1: 'Failed to load quota' });
-    } finally {
-      setLoading(false);
-    }
-  };
+  useFocusEffect(
+    useCallback(() => {
+      fetchQuota();
+    }, [])
+  );
+
+ const fetchQuota = async () => {
+  try {
+    const { data } = await getQuota();
+    setQuota(data.quota);
+    setLimits(data.limits);
+    setResetIn(data.resetIn);
+    updateUserQuota(data.quota, data.limits);
+  } catch (err) {
+    Toast.show({ type: 'error', text1: 'Failed to load quota' });
+  } finally {
+    setLoading(false);
+  }
+};
 
   const updateTimer = () => {
     const now = new Date();
@@ -47,46 +55,42 @@ export default function QuotaScreen() {
     setResetIn(`${h}h ${m}m`);
   };
 
-  const handleWatchAd = async (rewardType) => {
-    setAdLoading(true);
-    try {
-      // In production, show real AdMob rewarded ad here
-      // For now, simulate ad viewing
-      Alert.alert(
-        '🎬 Watch Ad',
-        `Watch a short ad to earn ${rewardType === 'caption' ? '+5 captions' : '+10 hashtags'}`,
-        [
-          { text: 'Cancel', style: 'cancel', onPress: () => setAdLoading(false) },
-          {
-            text: 'Watch Now',
-            onPress: async () => {
-              // Simulate ad completion delay
-              await new Promise(r => setTimeout(r, 1500));
-              try {
-                const { data } = await claimAdReward(rewardType);
-                setQuota(data.quota);
-                setLimits(data.limits);
-                updateUserQuota(data.quota, data.limits);
-                Toast.show({
-                  type: 'success',
-                  text1: data.message,
-                  text2: 'Keep creating amazing content!',
-                });
-              } catch (err) {
-                const msg = err.response?.data?.error || 'Failed to claim reward';
-                Toast.show({ type: 'error', text1: msg });
-              } finally {
-                setAdLoading(false);
-              }
-            }
+  const handleWatchAd = (rewardType) => {
+  setAdLoading(true);
+  Alert.alert(
+    '🎬 Watch Ad',
+    `Earn ${rewardType === 'caption' ? '+5 captions' : '+10 hashtags'}`,
+    [
+      {
+        text: 'Cancel',
+        style: 'cancel',
+        onPress: () => setAdLoading(false)
+      },
+      {
+        text: 'Watch Now',
+        onPress: async () => {
+          await new Promise(r => setTimeout(r, 1500));
+          try {
+            const { data } = await claimAdReward(rewardType);
+            setQuota(data.quota);
+            setLimits(data.limits);
+            updateUserQuota(data.quota, data.limits);
+            await fetchQuota();
+            Toast.show({
+              type: 'success',
+              text1: data.message,
+              text2: 'Keep creating amazing content!',
+            });
+          } catch (err) {
+            Toast.show({ type: 'error', text1: 'Failed to claim reward' });
+          } finally {
+            setAdLoading(false);
           }
-        ]
-      );
-    } catch (err) {
-      Toast.show({ type: 'error', text1: 'Ad unavailable. Try again later.' });
-      setAdLoading(false);
-    }
-  };
+        }
+      }
+    ]
+  );
+};
 
   if (loading) {
     return (

@@ -31,8 +31,11 @@ export default function LoginScreen({ navigation }) {
       } else {
         await register(email.trim(), password, name.trim());
       }
-    } catch (err) {
-      const msg = err.response?.data?.error || 'Something went wrong. Please try again.';
+    }  catch (err) {
+      console.log('Login error:', JSON.stringify(err.response?.data));
+      console.log('Status:', err.response?.status);
+      console.log('Message:', err.message);
+      const msg = err.response?.data?.error || err.message || 'Something went wrong. Please try again.';
       Alert.alert('Error', msg);
     } finally {
       setLoading(false);

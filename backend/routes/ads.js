@@ -18,8 +18,8 @@ router.post('/reward', protect, async (req, res) => {
     const user = await User.findById(req.user._id);
 
     // Daily cap on bonus rewards
-    const MAX_DAILY_BONUS_CAPTIONS = 25;
-    const MAX_DAILY_BONUS_HASHTAGS = 100;
+    const MAX_DAILY_BONUS_CAPTIONS = 50;
+    const MAX_DAILY_BONUS_HASHTAGS = 200;
 
     if (
       rewardType === 'caption' &&

@@ -22,8 +22,20 @@
       ]
     },
     "plugins": [
-      "expo-asset",
-      "expo-font"
-    ]
+      "expo-font",
+      [
+        "react-native-google-mobile-ads",
+        {
+          "androidAppId": "ca-app-pub-3940256099942544~3347511713",
+          "iosAppId": "ca-app-pub-3940256099942544~1458002511"
+        }
+      ]
+    ],
+    "extra": {
+      "apiUrl": "http://10.72.205.208:5000/api",
+      "eas": {
+        "projectId": "6acaf28b-2706-40f0-972f-a9ae9cf01d15"
+      }
+    }
   }
 }
