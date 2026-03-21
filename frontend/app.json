@@ -10,13 +10,14 @@
     ],
     "ios": {
       "supportsTablet": false,
-      "bundleIdentifier": "com.yourname.captioncraft"
+      "bundleIdentifier": "com.varsha.captioncraft"
     },
     "android": {
+      "versionCode": 1,
       "adaptiveIcon": {
         "backgroundColor": "#fff0f5"
       },
-      "package": "com.yourname.captioncraft",
+      "package": "com.varsha.captioncraft",
       "permissions": [
         "INTERNET"
       ]
