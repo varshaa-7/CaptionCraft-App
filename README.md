@@ -7,22 +7,22 @@ Full-stack mobile app: React Native (Expo) + Node.js/Express backend + MongoDB +
 
 
 ### Home Screen
-![Home](frontend/assets/screenshots/Home.jpeg)
+![Home](frontend/assets/screenshots/Home.jpg)
 
 ### Profile Screen
-![Login](frontend/assets/screenshots/Profile.jpeg)
+![Login](frontend/assets/screenshots/Profile.jpg)
 
 ### Instagram Caption Generation Screen
-![Generate](frontend/assets/screenshots/Instagram.jpeg)
+![Generate](frontend/assets/screenshots/Instagram.jpg)
 
 ### LinkedIn Caption Generation Screen
 ![History](frontend/assets/screenshots/Linkedin.jpg)
 
 ### Youtube Caption Generation Screen
-![Profile](frontend/assets/screenshots/Yt.jpeg)
+![Profile](frontend/assets/screenshots/Yt.jpg)
 
 ### Other Caption Generation Screen
-![Ads](frontend/assets/screenshots/Other.jpeg)
+![Ads](frontend/assets/screenshots/Other.jpg)
 
 ## Project Structure
 
