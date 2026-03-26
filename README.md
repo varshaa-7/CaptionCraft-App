@@ -5,6 +5,7 @@ Full-stack mobile app: React Native (Expo) + Node.js/Express backend + MongoDB +
 ---
 ## 📸 Screenshots
 
+
 ### Home Screen
 ![Home](frontend/assets/screenshots/Home.jpeg)
 
