@@ -16,7 +16,7 @@ Full-stack mobile app: React Native (Expo) + Node.js/Express backend + MongoDB +
 ![Generate](frontend/assets/screenshots/Instagram.jpeg)
 
 ### LinkedIn Caption Generation Screen
-![History](frontend/assets/screenshots/Linkedin.jpeg)
+![History](frontend/assets/screenshots/Linkedin.jpg)
 
 ### Youtube Caption Generation Screen
 ![Profile](frontend/assets/screenshots/Yt.jpeg)
