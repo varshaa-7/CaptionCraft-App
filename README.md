@@ -3,6 +3,25 @@
 Full-stack mobile app: React Native (Expo) + Node.js/Express backend + MongoDB + Grok AI + Firebase Auth + AdMob.
 
 ---
+## 📸 Screenshots
+
+### Home Screen
+![Home](frontend/assets/screenshots/Home.jpeg)
+
+### Profile Screen
+![Login](frontend/assets/screenshots/Profile.jpeg)
+
+### Instagram Caption Generation Screen
+![Generate](frontend/assets/screenshots/Instagram.jpeg)
+
+### LinkedIn Caption Generation Screen
+![History](frontend/assets/screenshots/Linkedin.jpeg)
+
+### Youtube Caption Generation Screen
+![Profile](frontend/assets/screenshots/Yt.jpeg)
+
+### Other Caption Generation Screen
+![Ads](frontend/assets/screenshots/Other.jpeg)
 
 ## Project Structure
 

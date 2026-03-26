@@ -33,7 +33,7 @@
       ]
     ],
     "extra": {
-      "apiUrl": "http://10.72.205.208:5000/api",
+      "apiUrl": "https://captioncraft-r3vn.onrender.com/api",
       "eas": {
         "projectId": "6acaf28b-2706-40f0-972f-a9ae9cf01d15"
       }
